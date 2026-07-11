@@ -1,285 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TGPM Ministry</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: black;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    body {
-      position: relative;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(8px);
-      padding: 16px 10px;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #F2A365;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-      padding: 100px 20px 40px;
-    }
-
-    #bg-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
-    }
-
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.80));
-      z-index: 2;
-    }
-
-    .hero-text {
-      position: relative;
-      z-index: 3;
-      max-width: 950px;
-      animation: fadeUp 1.3s ease;
-    }
-
-    .hero-text h1 {
-      margin: 0;
-      font-size: 64px;
-      line-height: 1.15;
-      font-weight: 700;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.5);
-    }
-
-    .hero-text p {
-      margin-top: 18px;
-      font-size: 22px;
-      font-weight: 300;
-      text-shadow: 0 4px 18px rgba(0,0,0,0.5);
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 24px;
-      padding: 13px 28px;
-      background: #F2A365;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: 0.3s;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      background: #e79047;
-    }
-
-    .section {
-      position: relative;
-      z-index: 5;
-      padding: 90px 20px;
-      background: #0a0a0a;
-      text-align: center;
-    }
-
-    .section h2 {
-      font-size: 38px;
-      margin-bottom: 10px;
-    }
-
-    .section p {
-      color: #d8d8d8;
-      max-width: 750px;
-      margin: 0 auto 35px;
-      line-height: 1.7;
-    }
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 25px;
-    }
-
-    .card {
-      width: 260px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 30px 20px;
-      transition: 0.35s;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-    }
-
-    .card:hover {
-      transform: translateY(-10px) scale(1.03);
-      background: rgba(255,255,255,0.12);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 12px;
-      color: #F2A365;
-      font-size: 22px;
-    }
-
-    .card p {
-      margin: 0;
-      color: #e5e5e5;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    footer {
-      position: relative;
-      z-index: 5;
-      background: #050505;
-      color: #bbb;
-      text-align: center;
-      padding: 22px 15px;
-      font-size: 14px;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(35px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero-text h1 {
-        font-size: 34px;
-      }
-
-      .hero-text p {
-        font-size: 17px;
-      }
-
-      nav {
-        gap: 12px;
-      }
-
-      nav a {
-        font-size: 14px;
-      }
-
-      .section h2 {
-        font-size: 30px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | PASS Theological Seminary</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="sermons.html">Sermons</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="prayer.html">Prayer</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <video id="bg-video" autoplay muted loop playsinline preload="auto">
-      <source src="videos/home.mp4" type="video/mp4">
-    </video>
-
-    <div class="overlay"></div>
-
-    <div class="hero-text">
-      <h1>THE GOD'S POWER MINISTRY</h1>
-      <p>Jesus is the only God</p>
-      <a href="sermons.html" class="btn">Watch Sermons</a>
+    <!-- Top Bar Info -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-info">
+                <span><i class="fas fa-phone-alt"></i> +91 8839939678</span>
+                <span><i class="fas fa-envelope"></i> pts.pass2020@gmail.com</span>
+            </div>
+            <div class="top-socials">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <section class="section">
-    <h2>Our Ministry</h2>
-    <p>
-      We are committed to spreading the Word of God through prayer, healing,
-      biblical teaching, and faith in Jesus Christ.
-    </p>
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-area">
+                <!-- Replace with actual logo image path when ready -->
+                <div class="logo-placeholder"><i class="fas fa-church"></i></div>
+                <div class="logo-text">
+                    <span class="brand-title">PASS</span>
+                    <span class="brand-subtitle">Theological Seminary</span>
+                </div>
+            </a>
+            
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Healing Ministry</h3>
-        <p>Praying for the sick and believing God for miracles, healing, and restoration.</p>
-      </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-      <div class="card">
-        <h3>Prayer Meetings</h3>
-        <p>Standing together in faith through powerful prayer gatherings and worship.</p>
-      </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <span class="hero-tagline">Equipping Leaders for Kingdom Ministry</span>
+            <h1>Developing Theological Depth & Spiritual Maturity</h1>
+            <p>Join a community dedicated to biblical truth, academic excellence, and practical ministry preparation.</p>
+            <div class="hero-buttons">
+                <a href="admission.html" class="btn btn-primary">Apply Now</a>
+                <a href="courses.html" class="btn btn-secondary">Explore Programs</a>
+            </div>
+        </div>
+    </section>
 
-      <div class="card">
-        <h3>Bible Teaching</h3>
-        <p>Sharing the truth of the Word of God with clarity, wisdom, and spiritual power.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Welcome / Brief About Section -->
+    <section class="welcome-section section-padding">
+        <div class="container grid-2">
+            <div class="welcome-text" data-aos="fade-right">
+                <span class="section-subtitle">Welcome to PTS</span>
+                <h2>Forming Reforming Minds & Hearts</h2>
+                <p>PASS Theological Seminary stands as a beacon of faithful biblical education. We are committed to fostering an environment where rigorous academic study meets vibrant spiritual formation, preparing you to serve the church and transform the world.</p>
+                <p>Whether you feel called to pastoral ministry, missions, Christian education, or deeper theological understanding, our programs are designed to anchor your faith firmly in God's Word.</p>
+                <a href="about.html" class="btn-text">Discover Our Vision & Mission <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="welcome-image" data-aos="fade-left">
+                <!-- A placeholder frame that will elegantly contain a campus or library image -->
+                <div class="image-frame">
+                    <div class="frame-accent"></div>
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" alt="Seminary Campus Life" class="responsive-img">
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    © 2026 TGPM Ministry | All Rights Reserved
-  </footer>
+    <!-- Pillars / Features Section -->
+    <section class="pillars-section section-padding bg-light">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2>Why Choose PASS?</h2>
+                <p>Our foundational pillars ensure a holistic and impactful educational journey.</p>
+            </div>
+            <div class="grid-3 mapping-pillars">
+                <div class="pillar-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pillar-icon"><i class="fas fa-book-open"></i></div>
+                    <h3>Sound Doctrine</h3>
+                    <p>Uncompromising commitment to the authority of Scripture and historical Christian orthodoxy.</p>
+                </div>
+                <div class="pillar-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pillar-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Academic Excellence</h3>
+                    <p>Rigorous curriculum taught by experienced faculty members dedicated to your growth.</p>
+                </div>
+                <div class="pillar-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pillar-icon"><i class="fas fa-pray"></i></div>
+                    <h3>Spiritual Formation</h3>
+                    <p>A vibrant, supportive community focused on prayer, mentorship, and character development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Quick Links / Action Sections -->
+    <section class="cta-banner section-padding">
+        <div class="container text-center" data-aos="zoom-in">
+            <h2>Ready to Take the Next Step?</h2>
+            <p>Admissions for the upcoming academic year are currently open. Download our information package and prospectus today.</p>
+            <div class="cta-buttons">
+                <a href="admission.html" class="btn btn-light"><i class="fas fa-file-download"></i> Admissions Details</a>
+                <a href="contact.html" class="btn btn-outline-light">Talk to an Advisor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <div class="logo-area light">
+                    <div class="logo-placeholder"><i class="fas fa-church"></i></div>
+                    <div class="logo-text">
+                        <span class="brand-title">PASS</span>
+                        <span class="brand-subtitle">Theological Seminary</span>
+                    </div>
+                </div>
+                <p>Equipping faithful servants for gospel ministry, cross-cultural missions, and theological leadership.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Our Programs</a></li>
+                    <li><a href="admission.html">Admissions</a></li>
+                    <li><a href="gallery.html">Campus Gallery</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone-alt"></i> +91 8839939678</p>
+                <p><i class="fas fa-envelope"></i> pts.pass2020@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> GitHub Pages Hosted</p>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 PASS Theological Seminary. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- AOS Scroll Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
 </body>
 </html>
