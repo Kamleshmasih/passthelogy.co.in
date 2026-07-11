@@ -75,11 +75,17 @@
     </div>
 
     <!-- Navigation Header -->
+    <!-- Navigation Header -->
     <header class="main-header">
         <div class="container nav-container">
-            <a href="index.html" class="logo-area">
-                <!-- Target your uploaded logo image -->
-                <img src="images/logo.png" alt="PASS Theological Seminary Logo" class="logo-img">
+            <a href="index.html" class="logo-area" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
+                <!-- Logo Image -->
+                <img src="images/logo.png" alt="PASS Logo" class="logo-img" style="height: 55px; width: auto; display: block;">
+                <!-- Brand Text Side-by-Side -->
+                <div class="logo-text" style="display: flex; flex-direction: column;">
+                    <span class="brand-title" style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: #1a365d; line-height: 1.1;">PASS</span>
+                    <span class="brand-subtitle" style="font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #718096; font-weight: 600;">Theological Seminary</span>
+                </div>
             </a>
             
             <button class="menu-toggle" aria-label="Toggle navigation">
@@ -88,8 +94,8 @@
 
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="courses.html">Courses</a></li>
                     <li><a href="admission.html">Admission</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
