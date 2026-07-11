@@ -81,7 +81,7 @@
         }
         .download-details p {
             font-size: 14px;
-            color: #718096;
+            color: #4a5568;
         }
         @media (max-width: 600px) {
             .download-card {
@@ -169,11 +169,11 @@
                             <p>PDF Document • Required for B.Th., M.Div., and Diploma Program admissions.</p>
                         </div>
                     </div>
-                    <!-- Direct download attribute pointing to the online downloads repository folder -->
-                    <a href="downloads/Application_Form.pdf" class="btn btn-light" download><i class="fas fa-download"></i> Download File</a>
+                    <!-- Fixed: Direct download targeted specifically to the .pdf file format -->
+                    <a href="downloads/Application_Form.pdf" class="btn btn-light" download="Application_Form.pdf"><i class="fas fa-download"></i> Download File</a>
                 </div>
 
-                <!-- Template Placeholder for Prospectus/Other resources -->
+                <!-- Prospectus Card -->
                 <div class="download-card">
                     <div class="download-info">
                         <div class="file-icon"><i class="fas fa-file-pdf"></i></div>
@@ -182,7 +182,8 @@
                             <p>PDF Document • Detailed overview of courses, campus rules, and fee structures.</p>
                         </div>
                     </div>
-                    <a href="downloads/prospectus.pdf" class="btn btn-light" download><i class="fas fa-download"></i> Download File</a>
+                    <!-- Fixed: Direct download targeted specifically to the .pdf file format -->
+                    <a href="downloads/prospectus.pdf" class="btn btn-light" download="prospectus.pdf"><i class="fas fa-download"></i> Download File</a>
                 </div>
 
             </div>
