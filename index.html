@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TGPM Ministry</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: black;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    body {
+      position: relative;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+      padding: 16px 10px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #F2A365;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 100px 20px 40px;
+    }
+
+    #bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.80));
+      z-index: 2;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 3;
+      max-width: 950px;
+      animation: fadeUp 1.3s ease;
+    }
+
+    .hero-text h1 {
+      margin: 0;
+      font-size: 64px;
+      line-height: 1.15;
+      font-weight: 700;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.5);
+    }
+
+    .hero-text p {
+      margin-top: 18px;
+      font-size: 22px;
+      font-weight: 300;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.5);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 13px 28px;
+      background: #F2A365;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: #e79047;
+    }
+
+    .section {
+      position: relative;
+      z-index: 5;
+      padding: 90px 20px;
+      background: #0a0a0a;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      color: #d8d8d8;
+      max-width: 750px;
+      margin: 0 auto 35px;
+      line-height: 1.7;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 25px;
+    }
+
+    .card {
+      width: 260px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 30px 20px;
+      transition: 0.35s;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #F2A365;
+      font-size: 22px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #e5e5e5;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    footer {
+      position: relative;
+      z-index: 5;
+      background: #050505;
+      color: #bbb;
+      text-align: center;
+      padding: 22px 15px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 34px;
+      }
+
+      .hero-text p {
+        font-size: 17px;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .section h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="sermons.html">Sermons</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="prayer.html">Prayer</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <video id="bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="videos/home.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="hero-text">
+      <h1>THE GOD'S POWER MINISTRY</h1>
+      <p>Jesus is the only God</p>
+      <a href="sermons.html" class="btn">Watch Sermons</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Our Ministry</h2>
+    <p>
+      We are committed to spreading the Word of God through prayer, healing,
+      biblical teaching, and faith in Jesus Christ.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Healing Ministry</h3>
+        <p>Praying for the sick and believing God for miracles, healing, and restoration.</p>
+      </div>
+
+      <div class="card">
+        <h3>Prayer Meetings</h3>
+        <p>Standing together in faith through powerful prayer gatherings and worship.</p>
+      </div>
+
+      <div class="card">
+        <h3>Bible Teaching</h3>
+        <p>Sharing the truth of the Word of God with clarity, wisdom, and spiritual power.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 TGPM Ministry | All Rights Reserved
+  </footer>
+
+</body>
+</html>
