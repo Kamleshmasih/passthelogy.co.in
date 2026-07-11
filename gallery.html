@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Gallery | PASS Theological Seminary</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-banner {
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            padding: 100px 0;
+            color: var(--white);
+            text-align: center;
+        }
+        .page-banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 54, 93, 0.85);
+        }
+        .page-banner-content {
+            position: relative;
+            z-index: 1;
+        }
+        .page-banner h1 {
+            color: var(--white);
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        
+        /* Gallery Layout Styling */
+        .gallery-filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #edf2f7;
+            border: none;
+            padding: 10px 24px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            height: 250px;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(26, 54, 93, 0.9));
+            opacity: 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            transition: var(--transition);
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-overlay h4 {
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar Info -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-info">
+                <span><i class="fas fa-phone-alt"></i> +91 8839939678</span>
+                <span><i class="fas fa-envelope"></i> pts.pass2020@gmail.com</span>
+            </div>
+            <div class="top-socials">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-area" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
+                <img src="images/logo.png" alt="PASS Logo" class="logo-img" style="height: 55px; width: auto; display: block;">
+                <div class="logo-text" style="display: flex; flex-direction: column;">
+                    <span class="brand-title" style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: #1a365d; line-height: 1.1;">PASS</span>
+                    <span class="brand-subtitle" style="font-family: 'Inter', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #718096; font-weight: 600;">Theological Seminary</span>
+                </div>
+            </a>
+            
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title Banner -->
+    <section class="page-banner">
+        <div class="page-banner-overlay"></div>
+        <div class="container page-banner-content" data-aos="fade-up">
+            <h1>Campus Gallery</h1>
+            <p>Visual Highlights of Life, Learning, and Community at PASS.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Presentation Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            
+            <!-- Dynamic Category Filter Buttons -->
+            <div class="gallery-filter-buttons" data-aos="fade-up">
+                <button class="filter-btn active" onclick="filterGallery('all')">All Photos</button>
+                <button class="filter-btn" onclick="filterGallery('campus')">Campus Life</button>
+                <button class="filter-btn" onclick="filterGallery('events')">Seminars & Events</button>
+                <button class="filter-btn" onclick="filterGallery('grad')">Graduations</button>
+            </div>
+
+            <!-- Photos Grid -->
+            <div class="gallery-grid" data-aos="fade-up" data-aos-delay="100">
+                
+                <!-- Image Item 1 -->
+                <div class="gallery-item structural-item" data-category="grad">
+                    <img src="images/gallery/graduation1.jpg" alt="Graduation Event" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80'">
+                    <div class="gallery-overlay">
+                        <h4>Graduation Ceremony</h4>
+                    </div>
+                </div>
+
+                <!-- Image Item 2 -->
+                <div class="gallery-item structural-item" data-category="campus">
+                    <img src="images/gallery/campus1.jpg" alt="Seminary Campus" onerror="this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80'">
+                    <div class="gallery-overlay">
+                        <h4>Main Library Complex</h4>
+                    </div>
+                </div>
+
+                <!-- Image Item 3 -->
+                <div class="gallery-item structural-item" data-category="events">
+                    <img src="images/gallery/event1.jpg" alt="Theology Seminar" onerror="this.src='https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80'">
+                    <div class="gallery-overlay">
+                        <h4>Annual Theology Lecture</h4>
+                    </div>
+                </div>
+                
+                <!-- Tip: Duplicate this structural-item template block for your remaining photos. -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <div class="logo-area light" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
+                    <img src="images/logo.png" alt="PASS Logo Light" class="logo-img" style="height: 50px; width: auto; background: rgba(255,255,255,0.1); padding: 3px; border-radius: 50%;">
+                    <div class="logo-text" style="display: flex; flex-direction: column; text-align: left;">
+                        <span class="brand-title" style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #ffffff; line-height: 1.1;">PASS</span>
+                        <span class="brand-subtitle" style="font-family: 'Inter', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #a0aec0;">Theological Seminary</span>
+                    </div>
+                </div>
+                <p style="margin-top: 20px;">Equipping faithful servants for gospel ministry, cross-cultural missions, and theological leadership.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Our Programs</a></li>
+                    <li><a href="admission.html">Admissions</a></li>
+                    <li><a href="gallery.html">Campus Gallery</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone-alt"></i> +91 8839939678</p>
+                <p><i class="fas fa-envelope"></i> pts.pass2020@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> GitHub Pages Hosted</p>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 PASS Theological Seminary. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- AOS Scroll Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+
+        // Simple filtering functionality for gallery segments
+        function filterGallery(category) {
+            // Update active status on filter button UI
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Handle items displaying
+            const items = document.querySelectorAll('.structural-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
