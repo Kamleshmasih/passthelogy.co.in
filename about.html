@@ -1,43 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - TGPM Ministry</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
-  <style>
-    body{margin:0;font-family:'Poppins',sans-serif;color:white;background:black;}
-    header{position:fixed;top:0;width:100%;padding:15px;background:rgba(0,0,0,0.5);text-align:center;z-index:1000;}
-    nav a{color:white;text-decoration:none;margin:15px;}
-    .hero{position:relative;height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;}
-    #bg-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
-    .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.6);z-index:-1;}
-    .content{max-width:900px;padding:20px;}
-    h1{font-size:60px;margin:0;}
-    p{font-size:20px;line-height:1.8;}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | PASS Theological Seminary</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific page styles for the inner header banner */
+        .page-banner {
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            padding: 100px 0;
+            color: var(--white);
+            text-align: center;
+        }
+        .page-banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 54, 93, 0.85);
+        }
+        .page-banner-content {
+            position: relative;
+            z-index: 1;
+        }
+        .page-banner h1 {
+            color: var(--white);
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        .logo-img {
+            height: 50px; /* Adjust height based on your layout preference */
+            width: auto;
+            display: block;
+        }
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .mission-vision-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="sermons.html">Sermons</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="prayer.html">Prayer</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
 
-<section class="hero">
-  <video id="bg-video" autoplay muted loop playsinline>
-    <source src="videos/about.mp4" type="video/mp4">
-  </video>
-  <div class="overlay"></div>
-  <div class="content">
-    <h1>About Us</h1>
-    <p>We are dedicated to spreading the Gospel of Jesus Christ through prayer, teaching, worship, and healing ministry.</p>
-  </div>
-</section>
+    <!-- Top Bar Info -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-info">
+                <span><i class="fas fa-phone-alt"></i> +91 8839939678</span>
+                <span><i class="fas fa-envelope"></i> pts.pass2020@gmail.com</span>
+            </div>
+            <div class="top-socials">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-area">
+                <!-- Target your uploaded logo image -->
+                <img src="images/logo.png" alt="PASS Theological Seminary Logo" class="logo-img">
+            </a>
+            
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title Banner -->
+    <section class="page-banner">
+        <div class="page-banner-overlay"></div>
+        <div class="container page-banner-content" data-aos="fade-up">
+            <h1>About Our Seminary</h1>
+            <p>Rooted in Scripture, Focused on Ministry, committed to Excellence.</p>
+        </div>
+    </section>
+
+    <!-- Detailed About / History Section -->
+    <section class="section-padding">
+        <div class="container grid-2">
+            <div class="about-details" data-aos="fade-right">
+                <span class="section-subtitle">Who We Are</span>
+                <h2>Our Heritage & Commitment</h2>
+                <p>PASS Theological Seminary was established to provide sound biblical and theological education to students called by God to serve in various ministry contexts. We believe in preparing students completely—mentally, spiritually, and practically—to address the complex challenges of the contemporary global church.</p>
+                <p>Through foundational theological disciplines, dynamic community life, and mentored ministry execution, we cultivate robust academic capacity alongside passionate Christian character.</p>
+            </div>
+            <div class="about-side-image" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" alt="Students Studying" class="responsive-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Banner -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2>Our Foundations</h2>
+                <p>The core values guiding our institutional strategy and classroom learning environments.</p>
+            </div>
+            <div class="mission-vision-grid">
+                <div class="pillar-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pillar-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Our Vision</h3>
+                    <p>To be an exceptional theological institution globally recognized for fostering deep biblical scholarship, authentic spiritual transformation, and bold missionary zeal within our student community.</p>
+                </div>
+                <div class="pillar-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pillar-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Our Mission</h3>
+                    <p>To train, educate, and equip generations of faithful pastors, teachers, missionaries, and church leaders through an uncompromisingly biblical curriculum and focused mentorship structures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <div class="logo-area light">
+                    <img src="images/logo.png" alt="PASS Logo Light" class="logo-img" style="filter: brightness(0) invert(1);">
+                </div>
+                <p style="margin-top: 20px;">Equipping faithful servants for gospel ministry, cross-cultural missions, and theological leadership.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Our Programs</a></li>
+                    <li><a href="admission.html">Admissions</a></li>
+                    <li><a href="gallery.html">Campus Gallery</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone-alt"></i> +91 8839939678</p>
+                <p><i class="fas fa-envelope"></i> pts.pass2020@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> GitHub Pages Hosted</p>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 PASS Theological Seminary. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- AOS Scroll Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true
+        });
+    </script>
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
 </body>
 </html>
