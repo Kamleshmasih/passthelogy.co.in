@@ -61,17 +61,41 @@
             margin-right: 12px;
             margin-top: 5px;
         }
-        /* Custom Button Layout Setup */
-        .admission-action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 25px;
+        
+        /* Exam Portal Styles */
+        .exam-portal-box {
+            margin-top: 30px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
-        @media (min-width: 600px) {
-            .admission-action-buttons {
-                flex-direction: row;
-            }
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .btn-exam {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 15px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            text-align: center;
+        }
+        .btn-exam:hover {
+            background: var(--primary-color);
+            color: var(--white);
         }
     </style>
 </head>
@@ -124,29 +148,35 @@
     <section class="page-banner">
         <div class="page-banner-overlay"></div>
         <div class="container page-banner-content" data-aos="fade-up">
-            <h1>Admissions & Student Portal</h1>
-            <p>Apply online as a new candidate, or complete your active year-end examinations.</p>
+            <h1>Academic & Examination Portal</h1>
+            <p>Apply online as a new candidate, or access your program's year-end final examination panels.</p>
         </div>
     </section>
 
-    <!-- Admission Details Section -->
+    <!-- Admission & Exam Section -->
     <section class="section-padding bg-light">
         <div class="container grid-2">
+            
             <div class="admission-info" data-aos="fade-right">
                 <span class="section-subtitle">Enrollment & Assessment</span>
-                <h2>Academic Portal</h2>
-                <p>New applicants can fill out the official registration form online. Active 1st-year and 2nd-year students can directly access their dynamic year-end final examination forms below.</p>
+                <h2>New Student Registration</h2>
+                <p>Prospective students ready to join our theology programs can complete their registration instantly via our live application dashboard.</p>
                 
-                <!-- Action Buttons Integration Block -->
-                <div class="admission-action-buttons">
-                    <!-- Google Form Registration Redirect -->
-                    <a href="YOUR_APPLICATION_GOOGLE_FORM_URL" target="_blank" class="btn btn-light" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
-                        <i class="fab fa-google"></i> Fill Admission Form
-                    </a>
-                    <!-- Google Form Year-End Examination Redirect -->
-                    <a href="YOUR_YEAR_END_EXAM_GOOGLE_FORM_URL" target="_blank" class="btn btn-outline-light" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 2px solid var(--primary-color);">
-                        <i class="fas fa-file-alt"></i> Year-End Exam Form (1st & 2nd Year)
-                    </a>
+                <a href="YOUR_APPLICATION_GOOGLE_FORM_URL" target="_blank" class="btn btn-light" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 15px;">
+                    <i class="fab fa-google"></i> Fill Admission Form
+                </a>
+
+                <!-- Program Specific Year-End Exam Portal Section -->
+                <div class="exam-portal-box">
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: var(--primary-color);">Year-End Exam Forms (1st & 2nd Year)</h3>
+                    <p style="font-size: 14px; color: #718096; margin-top: 5px;">Select your respective course program below to fill out your official final examination form:</p>
+                    
+                    <div class="exam-grid">
+                        <a href="YOUR_BTH_EXAM_URL" target="_blank" class="btn-exam"><i class="fas fa-file-alt"></i> B.Th. Exam</a>
+                        <a href="YOUR_MDIV_EXAM_URL" target="_blank" class="btn-exam"><i class="fas fa-file-alt"></i> M.Div. Exam</a>
+                        <a href="YOUR_DTH_EXAM_URL" target="_blank" class="btn-exam"><i class="fas fa-file-alt"></i> D.Th. Exam</a>
+                        <a href="YOUR_CTH_EXAM_URL" target="_blank" class="btn-exam"><i class="fas fa-file-alt"></i> C.Th. Exam</a>
+                    </div>
                 </div>
             </div>
             
