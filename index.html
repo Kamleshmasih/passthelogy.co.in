@@ -14,6 +14,13 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .logo-img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
@@ -35,12 +42,8 @@
     <header class="main-header">
         <div class="container nav-container">
             <a href="index.html" class="logo-area">
-                <!-- Replace with actual logo image path when ready -->
-                <div class="logo-placeholder"><i class="fas fa-church"></i></div>
-                <div class="logo-text">
-                    <span class="brand-title">PASS</span>
-                    <span class="brand-subtitle">Theological Seminary</span>
-                </div>
+                <!-- Using your uploaded logo -->
+                <img src="images/logo.png" alt="PASS Theological Seminary Logo" class="logo-img">
             </a>
             
             <button class="menu-toggle" aria-label="Toggle navigation">
@@ -86,7 +89,6 @@
                 <a href="about.html" class="btn-text">Discover Our Vision & Mission <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="welcome-image" data-aos="fade-left">
-                <!-- A placeholder frame that will elegantly contain a campus or library image -->
                 <div class="image-frame">
                     <div class="frame-accent"></div>
                     <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" alt="Seminary Campus Life" class="responsive-img">
@@ -139,13 +141,10 @@
         <div class="container footer-grid">
             <div class="footer-info">
                 <div class="logo-area light">
-                    <div class="logo-placeholder"><i class="fas fa-church"></i></div>
-                    <div class="logo-text">
-                        <span class="brand-title">PASS</span>
-                        <span class="brand-subtitle">Theological Seminary</span>
-                    </div>
+                    <!-- Integrated inverted logo for dark background footer -->
+                    <img src="images/logo.png" alt="PASS Logo Light" class="logo-img" style="filter: brightness(0) invert(1);">
                 </div>
-                <p>Equipping faithful servants for gospel ministry, cross-cultural missions, and theological leadership.</p>
+                <p style="margin-top: 20px;">Equipping faithful servants for gospel ministry, cross-cultural missions, and theological leadership.</p>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
@@ -171,6 +170,11 @@
 
     <!-- AOS Scroll Animation Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true
+        });
+    </script>
     <!-- Custom JavaScript -->
     <script src="js/script.js"></script>
 </body>
