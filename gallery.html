@@ -180,12 +180,13 @@
         AOS.init({ once: true });
     </script>
     
-    <!-- Smart Script to generate images and cleanly skip missing numbers -->
+    <!-- Smart Script to generate all 164 grid items automatically -->
     <script>
         const totalPhotos = 164;
         const galleryContainer = document.getElementById('photoGallery');
         
         for (let i = 1; i <= totalPhotos; i++) {
+            // Pad numbers with leading zeros to maintain 3 digits (e.g. 001, 012, 123)
             const fileNumber = String(i).padStart(3, '0');
             
             const galleryItem = document.createElement('div');
@@ -194,12 +195,7 @@
             const img = document.createElement('img');
             img.src = `images/gallery/${fileNumber}.JPG`;
             img.alt = `PASS Seminary Memory ${fileNumber}`;
-            img.loading = 'lazy';
-            
-            // If the image fails to load (missing number/gap), hide the container completely
-            img.onerror = function() {
-                galleryItem.remove();
-            };
+            img.loading = 'lazy'; // Optimizes page loading speeds for massive lists
             
             galleryItem.appendChild(img);
             galleryContainer.appendChild(galleryItem);
