@@ -39,74 +39,36 @@
             font-size: 42px;
             margin-bottom: 10px;
         }
-        
-        /* Gallery Layout Styling */
-        .gallery-filter-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        .filter-btn {
-            background: #edf2f7;
-            border: none;
-            padding: 10px 24px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            color: var(--primary-color);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .filter-btn.active, .filter-btn:hover {
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-        }
-        
+
+        /* Modern Grid Layout for Gallery */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
+            margin-top: 30px;
         }
         .gallery-item {
-            position: relative;
-            border-radius: 8px;
             overflow: hidden;
+            border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            height: 250px;
-            cursor: pointer;
+            background: var(--white);
+            transition: var(--transition);
+            border: 1px solid #e2e8f0;
+            aspect-ratio: 4 / 3;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
         }
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
             transition: transform 0.5s ease;
         }
         .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(transparent, rgba(26, 54, 93, 0.9));
-            opacity: 0;
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-            transition: var(--transition);
-        }
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-        .gallery-overlay h4 {
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -160,52 +122,20 @@
         <div class="page-banner-overlay"></div>
         <div class="container page-banner-content" data-aos="fade-up">
             <h1>Campus Gallery</h1>
-            <p>Visual Highlights of Life, Learning, and Community at PASS.</p>
+            <p>Visual highlights of academic life, graduation celebrations, and ministry events.</p>
         </div>
     </section>
 
-    <!-- Gallery Presentation Section -->
+    <!-- Main Gallery Section -->
     <section class="section-padding bg-light">
         <div class="container">
-            
-            <!-- Dynamic Category Filter Buttons -->
-            <div class="gallery-filter-buttons" data-aos="fade-up">
-                <button class="filter-btn active" onclick="filterGallery('all')">All Photos</button>
-                <button class="filter-btn" onclick="filterGallery('campus')">Campus Life</button>
-                <button class="filter-btn" onclick="filterGallery('events')">Seminars & Events</button>
-                <button class="filter-btn" onclick="filterGallery('grad')">Graduations</button>
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2>Life at PASS Seminary</h2>
+                <p>Browse through memories of our students, classes, celebrations, and chapel assemblies.</p>
             </div>
 
-            <!-- Photos Grid -->
-            <div class="gallery-grid" data-aos="fade-up" data-aos-delay="100">
-                
-                <!-- Image Item 1 -->
-                <div class="gallery-item structural-item" data-category="grad">
-                    <img src="images/gallery/graduation1.jpg" alt="Graduation Event" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80'">
-                    <div class="gallery-overlay">
-                        <h4>Graduation Ceremony</h4>
-                    </div>
-                </div>
-
-                <!-- Image Item 2 -->
-                <div class="gallery-item structural-item" data-category="campus">
-                    <img src="images/gallery/campus1.jpg" alt="Seminary Campus" onerror="this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80'">
-                    <div class="gallery-overlay">
-                        <h4>Main Library Complex</h4>
-                    </div>
-                </div>
-
-                <!-- Image Item 3 -->
-                <div class="gallery-item structural-item" data-category="events">
-                    <img src="images/gallery/event1.jpg" alt="Theology Seminar" onerror="this.src='https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80'">
-                    <div class="gallery-overlay">
-                        <h4>Annual Theology Lecture</h4>
-                    </div>
-                </div>
-                
-                <!-- Tip: Duplicate this structural-item template block for your remaining photos. -->
-
-            </div>
+            <!-- JavaScript dynamically injects all 164 images here -->
+            <div class="gallery-grid" id="photoGallery" data-aos="fade-up" data-aos-delay="100"></div>
         </div>
     </section>
 
@@ -248,25 +178,30 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true });
-
-        // Simple filtering functionality for gallery segments
-        function filterGallery(category) {
-            // Update active status on filter button UI
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            // Handle items displaying
-            const items = document.querySelectorAll('.structural-item');
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
+    </script>
+    
+    <!-- Smart Script to generate all 164 grid items automatically -->
+    <script>
+        const totalPhotos = 164;
+        const galleryContainer = document.getElementById('photoGallery');
+        
+        for (let i = 1; i <= totalPhotos; i++) {
+            // Pad numbers with leading zeros to maintain 3 digits (e.g. 001, 012, 123)
+            const fileNumber = String(i).padStart(3, '0');
+            
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            
+            const img = document.createElement('img');
+            img.src = `images/gallery/${fileNumber}.JPG`;
+            img.alt = `PASS Seminary Memory ${fileNumber}`;
+            img.loading = 'lazy'; // Optimizes page loading speeds for massive lists
+            
+            galleryItem.appendChild(img);
+            galleryContainer.appendChild(galleryItem);
         }
     </script>
+    
     <!-- Custom JavaScript -->
     <script src="js/script.js"></script>
 </body>
