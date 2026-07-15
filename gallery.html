@@ -55,6 +55,7 @@
             transition: var(--transition);
             border: 1px solid #e2e8f0;
             aspect-ratio: 4 / 3;
+            cursor: pointer;
         }
         .gallery-item:hover {
             transform: translateY(-5px);
@@ -69,6 +70,53 @@
         }
         .gallery-item:hover img {
             transform: scale(1.05);
+        }
+
+        /* Interactive Lightbox Overlay CSS */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 35, 60, 0.95);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-overlay img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .lightbox-overlay.active img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: #ffffff;
+            font-size: 45px;
+            font-weight: 300;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            user-select: none;
+        }
+        .lightbox-close:hover {
+            opacity: 1;
         }
     </style>
 </head>
@@ -139,6 +187,12 @@
         </div>
     </section>
 
+    <!-- Lightbox Popup Container Modal -->
+    <div class="lightbox-overlay" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img id="lightboxImg" src="" alt="Popup Preview">
+    </div>
+
     <!-- Footer -->
     <footer class="main-footer">
         <div class="container footer-grid">
@@ -180,13 +234,15 @@
         AOS.init({ once: true });
     </script>
     
-    <!-- Smart Script to generate all 164 grid items automatically -->
+    <!-- Smart Script to generate all 164 grid items with Lightbox popup interactivity -->
     <script>
         const totalPhotos = 164;
         const galleryContainer = document.getElementById('photoGallery');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
         
         for (let i = 1; i <= totalPhotos; i++) {
-            // Pad numbers with leading zeros to maintain 3 digits (e.g. 001, 012, 123)
             const fileNumber = String(i).padStart(3, '0');
             
             const galleryItem = document.createElement('div');
@@ -195,11 +251,33 @@
             const img = document.createElement('img');
             img.src = `images/gallery/${fileNumber}.JPG`;
             img.alt = `PASS Seminary Memory ${fileNumber}`;
-            img.loading = 'lazy'; // Optimizes page loading speeds for massive lists
+            img.loading = 'lazy';
+            
+            // Instantly remove broken paths or missing files silently
+            img.onerror = function() {
+                galleryItem.remove();
+            };
+            
+            // Open full-screen popup window when item card is clicked
+            galleryItem.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+            });
             
             galleryItem.appendChild(img);
             galleryContainer.appendChild(galleryItem);
         }
+
+        // Close full window lightbox events
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.classList.remove('active');
+            }
+        });
     </script>
     
     <!-- Custom JavaScript -->
