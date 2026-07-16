@@ -15,6 +15,19 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
+        /* Anti-Screenshot Print Media Shield */
+        @media print {
+            body { display: none !important; }
+        }
+
+        /* Prevent Text & Image Highlighting across the entire page */
+        body {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+        }
+
         .page-banner {
             position: relative;
             background: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
@@ -64,12 +77,27 @@
             transform: translateY(-5px);
             box-shadow: 0 12px 20px rgba(0,0,0,0.1);
         }
+        
+        /* Transparent Shield Layer to completely block direct image dragging/saving */
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background: transparent;
+        }
+
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
             transition: transform 0.5s ease;
+            -webkit-user-drag: none !important;
+            user-drag: none !important;
         }
         .gallery-item:hover img {
             transform: scale(1.05);
@@ -95,14 +123,39 @@
             opacity: 1 !important;
             pointer-events: auto !important;
         }
-        .lightbox-overlay img {
+        
+        /* Wrapper with transparent block to shield the large preview view */
+        .lightbox-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             max-width: 90% !important;
             max-height: 85% !important;
+        }
+        .lightbox-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000001;
+            background: transparent;
+        }
+
+        .lightbox-overlay img {
+            width: 100%;
+            height: 100%;
+            max-height: 85vh;
+            object-fit: contain;
             border-radius: 4px !important;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
             transform: scale(0.95);
             transition: transform 0.3s ease;
             z-index: 1000000 !important;
+            -webkit-user-drag: none !important;
+            user-drag: none !important;
         }
         .lightbox-overlay.active img {
             transform: scale(1) !important;
@@ -118,7 +171,7 @@
             opacity: 0.85 !important;
             transition: opacity 0.2s;
             user-select: none !important;
-            z-index: 1000001 !important;
+            z-index: 1000002 !important;
             line-height: 1;
         }
         .lightbox-close:hover {
@@ -126,7 +179,7 @@
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;"> <!-- Blocks Right-Clicks entirely -->
 
     <!-- Top Bar Info -->
     <div class="top-bar">
@@ -196,7 +249,9 @@
     <!-- Lightbox Popup Container Modal -->
     <div class="lightbox-overlay" id="lightbox">
         <span class="lightbox-close" id="lightboxClose">&times;</span>
-        <img id="lightboxImg" src="" alt="Popup Preview">
+        <div class="lightbox-wrapper">
+            <img id="lightboxImg" src="" alt="Popup Preview">
+        </div>
     </div>
 
     <!-- Footer -->
@@ -259,12 +314,10 @@
             img.alt = `PASS Seminary Memory ${fileNumber}`;
             img.loading = 'lazy';
             
-            // Instantly remove broken placeholders or missing array items silently
             img.onerror = function() {
                 galleryItem.remove();
             };
             
-            // Open full-screen popup modal dialog when item card is clicked
             galleryItem.addEventListener('click', (e) => {
                 e.preventDefault();
                 lightboxImg.src = img.src;
@@ -275,7 +328,6 @@
             galleryContainer.appendChild(galleryItem);
         }
 
-        // Close full window dialog behaviors
         lightboxClose.addEventListener('click', () => {
             lightbox.classList.remove('active');
         });
@@ -283,6 +335,23 @@
         lightbox.addEventListener('click', (e) => {
             if (e.target !== lightboxImg) {
                 lightbox.classList.remove('active');
+            }
+        });
+
+        // Advanced Keyboard Defense Layer (Blocks F12, Ctrl+S, Ctrl+P, Ctrl+C, Ctrl+Shift+I)
+        document.addEventListener('keydown', function(e) {
+            if (
+                e.keyCode == 123 || // F12
+                (e.ctrlKey && e.shiftKey && e.keyCode == 73) || // Ctrl+Shift+I
+                (e.ctrlKey && e.shiftKey && e.keyCode == 67) || // Ctrl+Shift+C
+                (e.ctrlKey && e.shiftKey && e.keyCode == 74) || // Ctrl+Shift+J
+                (e.ctrlKey && e.keyCode == 85) || // Ctrl+U (View Source)
+                (e.ctrlKey && e.keyCode == 83) || // Ctrl+S (Save Page)
+                (e.ctrlKey && e.keyCode == 67) || // Ctrl+C (Copy)
+                (e.ctrlKey && e.keyCode == 80)    // Ctrl+P (Print)
+            ) {
+                e.preventDefault();
+                return false;
             }
         });
     </script>
